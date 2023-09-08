@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/students"></ion-back-button>
+    </ion-buttons>
+    <ion-title>List of students</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-searchbar (input)="filterStudents($event)"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let student of filteredStudents">
+      <ion-label>
+        <h2>{{ student.name }}</h2>
+        <p>Edad: {{ student.age }}</p>
+        <p>Cursos: {{ student.courses.join(', ') }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

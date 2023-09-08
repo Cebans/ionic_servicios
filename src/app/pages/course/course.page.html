@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>course</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let course of courses">
+      <ion-label>
+        <h2>{{ course.name }}</h2>
+        <p>Código: {{ course.code }}</p>
+        <p>Estudiantes:</p>
+        <ul>
+          
+        </ul>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
