@@ -1,7 +1,12 @@
 import { Student } from "../student.model";
+export class CourseWithStudents {
+  code: string;
+  name: string;
+  students: Student[];
 
-export class Course {
-    students: Student[] = []; 
-  
-    constructor(public code: string, public name: string) {}
+  constructor(code: string, name: string, students: Student[]) {
+    this.code = code;
+    this.name = name;
+    this.students = students;
   }
+}

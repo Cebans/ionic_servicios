@@ -1,25 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Course } from '../pages/course/course.model';
+import { CourseWithStudents } from '../pages/course/course.model';
 import { StudentService } from './student.service';
 import { Student } from '../pages/student.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseService {
-
-  private courses: Course[] = [
-    new Course('A001', 'Curso A'),
-    new Course('B002', 'Curso B'),
+  private courses: CourseWithStudents[] = [
+    { code: 'A101', name: 'eeeee', students: [] },
+   { code: 'B202', name: 'cccc', students: [] },
   ];
 
-  constructor(private studentService: StudentService) {
-    this.courses.forEach((course) => {
-      course.students = this.studentService.getStudentsByCourse(course.code);
-    });
-  }
+  constructor() {}
 
-  getCourses(): Course[] {
+  getCourses(): CourseWithStudents[] {
     return this.courses;
   }
-}
+  }

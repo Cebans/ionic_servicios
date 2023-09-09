@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
+import { IonSearchbar, IonicModule } from '@ionic/angular';
 import { CourseService } from 'src/app/services/course.service';
-import { Course } from './course.model';
+import { CourseWithStudents } from './course.model';
 
 @Component({
   selector: 'app-course',
@@ -14,12 +14,27 @@ import { Course } from './course.model';
 })
 export class CoursePage implements OnInit {
 
-  courses: Course[] = [];
+  searchTerm: string = '';
+
+  @ViewChild('searchBar') searchBar: IonSearchbar | undefined;
+  courses: CourseWithStudents[] = [];
+  filteredCourses: CourseWithStudents[] = [];
 
   constructor(private courseService: CourseService) {}
 
   ngOnInit() {
     this.courses = this.courseService.getCourses();
+    this.filteredCourses = [...this.courses];
   }
 
-}
+  onInput(searchBar: IonSearchbar) {
+    const searchTerm = searchBar.value;
+    if (searchTerm !== null && searchTerm !== undefined) {
+      this.filterCourses(searchTerm);
+    }
+  }
+  filterCourses(searchTerm: string) {
+    return this.courses.filter((course) => course.name.includes(searchTerm) || course.code.includes(searchTerm));
+  }
+  }
+  

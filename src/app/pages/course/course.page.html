@@ -1,20 +1,18 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/students"></ion-back-button>
+    </ion-buttons>
     <ion-title>course</ion-title>
   </ion-toolbar>
+  <ion-searchbar #searchBar (ionInput)="onInput(searchBar)"></ion-searchbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-list>
     <ion-item *ngFor="let course of courses">
-      <ion-label>
-        <h2>{{ course.name }}</h2>
-        <p>Código: {{ course.code }}</p>
-        <p>Estudiantes:</p>
-        <ul>
-          
-        </ul>
-      </ion-label>
+      <ion-label>{{ course.code }}</ion-label>
+      <ion-note slot="end">{{ course.name }}</ion-note>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { StudentPage } from '../pages/student/student.page';
 import { Student } from '../pages/student.model';
 import { CourseService } from './course.service';
-import { Course } from '../pages/course/course.model';
+import { CourseWithStudents } from '../pages/course/course.model';
 
 @Injectable({
   providedIn: 'root'
